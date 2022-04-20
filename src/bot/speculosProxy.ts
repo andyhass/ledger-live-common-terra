@@ -57,12 +57,16 @@ export const createSpeculosDevice = async (deviceParams: any): Promise<any> => {
 };
 
 export const releaseSpeculosDevice = async (id: string): Promise<any> => {
-  return (
-    await network({
-      method: "DELETE",
-      url: `${getSpeculosHttp()}/${id}`,
-    })
-  ).data;
+  await network({
+    method: "DELETE",
+    url: `${getSpeculosHttp()}/${id}`,
+  });
+
+  const obj = data[id];
+
+  if (obj) {
+    await obj.destroy();
+  }
 };
 
 export const disconnectSpeculosDevice = async (id: string) => {

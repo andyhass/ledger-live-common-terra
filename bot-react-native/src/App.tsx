@@ -32,13 +32,14 @@ const launchBot = async (setData: (returnValue: number) => void) => {
     if (Config.BOT_FILTER_FAMILY) {
       arg.family = Config.OT_FILTER_FAMILY;
     }
-    setData(await bot(arg));
+    await bot(arg).then(result => {
+      setData(result);
+    });
     // TODO inform upstream that it's finished
   } catch (e: any) {
     // TODO inform upstream that critical error happened
     log('critical', String(e));
   }
-  logger?.close();
 };
 
 // Ignore all log notifications:
@@ -58,7 +59,7 @@ const App = () => {
       ) : data === 1 ? (
         <Text>Bot finished</Text>
       ) : (
-        <Text>Bot has failed</Text>
+        <Text>Bot has failed {String(data)}</Text>
       )}
     </View>
   );
