@@ -192,8 +192,10 @@ export async function bot({ currency, family, mutation }: Arg = {}) {
           (s.mutations && s.mutations.every((r) => !r.mutation)))
     )
     .map((s) => s.spec.name);
-  const { GITHUB_SHA, GITHUB_TOKEN, GITHUB_RUN_ID, GITHUB_WORKFLOW } =
-    process.env;
+  const GITHUB_SHA = getEnv("GITHUB_SHA");
+  const GITHUB_TOKEN = getEnv("GITHUB_TOKEN");
+  const GITHUB_RUN_ID = getEnv("GITHUB_RUN_ID");
+  const GITHUB_WORKFLOW = getEnv("GITHUB_WORKFLOW");
 
   if (GITHUB_TOKEN && GITHUB_SHA) {
     log("github", "will send a report to " + GITHUB_SHA);
@@ -396,7 +398,9 @@ export async function bot({ currency, family, mutation }: Arg = {}) {
     });
     body += "\n</details>\n\n";
 
-    const { SLACK_API_TOKEN, SLACK_CHANNEL, BOT_REPORT_FOLDER } = process.env;
+    const SLACK_API_TOKEN = getEnv("SLACK_API_TOKEN");
+    const SLACK_CHANNEL = getEnv("SLACK_CHANNEL");
+    const BOT_REPORT_FOLDER = getEnv("BOT_REPORT_FOLDER");
 
     if (BOT_REPORT_FOLDER) {
       await botReportFolder(

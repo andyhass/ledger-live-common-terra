@@ -600,6 +600,41 @@ const envDefinitions = {
     parser: boolParser,
     desc: "use the staging URL for the learn page",
   },
+  GITHUB_SHA: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  GITHUB_TOKEN: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  GITHUB_RUN_ID: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  GITHUB_WORKFLOW: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  SLACK_API_TOKEN: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  SLACK_CHANNEL: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
+  BOT_REPORT_FOLDER: {
+    def: "",
+    parser: stringParser,
+    desc: "CI Bot Spec",
+  },
 };
 
 const getDefinition = (name: string): EnvDef<any> | null | undefined =>
