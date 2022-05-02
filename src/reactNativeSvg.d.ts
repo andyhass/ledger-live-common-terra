@@ -11,4 +11,5 @@ declare module "react-native-svg" {
   export class Stop extends React.Component<any, any> {}
   export class Mask extends React.Component<any, any> {}
   export class LinearGradient extends React.Component<any, any> {}
+  export class Circle extends React.Component<any, any> {}
 }

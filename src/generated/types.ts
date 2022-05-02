@@ -14,6 +14,8 @@ import { Transaction as ethereumTransaction } from "../families/ethereum/types";
 import { TransactionRaw as ethereumTransactionRaw } from "../families/ethereum/types";
 import { Transaction as filecoinTransaction } from "../families/filecoin/types";
 import { TransactionRaw as filecoinTransactionRaw } from "../families/filecoin/types";
+import { Transaction as lunaTransaction } from "../families/luna/types";
+import { TransactionRaw as lunaTransactionRaw } from "../families/luna/types";
 import { Transaction as neoTransaction } from "../families/neo/types";
 import { TransactionRaw as neoTransactionRaw } from "../families/neo/types";
 import { Transaction as polkadotTransaction } from "../families/polkadot/types";
@@ -38,6 +40,7 @@ export type Transaction =
   | elrondTransaction
   | ethereumTransaction
   | filecoinTransaction
+  | lunaTransaction
   | neoTransaction
   | polkadotTransaction
   | rippleTransaction
@@ -54,6 +57,7 @@ export type TransactionRaw =
   | elrondTransactionRaw
   | ethereumTransactionRaw
   | filecoinTransactionRaw
+  | lunaTransactionRaw
   | neoTransactionRaw
   | polkadotTransactionRaw
   | rippleTransactionRaw
