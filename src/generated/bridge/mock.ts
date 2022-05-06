@@ -6,6 +6,8 @@ import cosmos from "../../families/cosmos/bridge/mock";
 
 import ethereum from "../../families/ethereum/bridge/mock";
 
+import luna from "../../families/luna/bridge/mock";
+
 import ripple from "../../families/ripple/bridge/mock";
 
 import solana from "../../families/solana/bridge/mock";
@@ -20,6 +22,7 @@ export default {
   bitcoin,
   cosmos,
   ethereum,
+  luna,
   ripple,
   solana,
   stellar,

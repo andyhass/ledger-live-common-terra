@@ -47,7 +47,10 @@ export const getAccountInfo = async (address: string): Promise<any> => {
 };
 
 export const getAccount = async (
-  address: string
+  address: string,
+  overrides?: {
+    defaultEndpoint: string;
+  }
 ): Promise<{ address: string; accountNumber: number; sequence: number }> => {
   const response = {
     address: address,
@@ -58,7 +61,9 @@ export const getAccount = async (
   try {
     const { data } = await network({
       method: "GET",
-      url: `${defaultEndpoint}/cosmos/auth/v1beta1/accounts/${address}`,
+      url: `${
+        overrides?.defaultEndpoint || defaultEndpoint
+      }/cosmos/auth/v1beta1/accounts/${address}`,
     });
 
     if (data.account.address) {
@@ -86,7 +91,7 @@ export const getChainId = async (): Promise<string> => {
   return data.node_info.network;
 };
 
-const getHeight = async (): Promise<number> => {
+export const getHeight = async (): Promise<number> => {
   const { data } = await network({
     method: "GET",
     url: `${defaultEndpoint}/cosmos/base/tendermint/v1beta1/blocks/latest`,
@@ -95,10 +100,17 @@ const getHeight = async (): Promise<number> => {
   return data.block.header.height;
 };
 
-const getAllBalances = async (address: string): Promise<BigNumber> => {
+export const getAllBalances = async (
+  address: string,
+  overrides?: {
+    defaultEndpoint: string;
+  }
+): Promise<BigNumber> => {
   const { data } = await network({
     method: "GET",
-    url: `${defaultEndpoint}/cosmos/bank/v1beta1/balances/${address}`,
+    url: `${
+      overrides?.defaultEndpoint || defaultEndpoint
+    }/cosmos/bank/v1beta1/balances/${address}`,
   });
 
   let amount = new BigNumber(0);
@@ -213,11 +225,18 @@ const getWithdrawAddress = async (address: string): Promise<string> => {
   return data.withdraw_address;
 };
 
-const getTransactions = async (address: string): Promise<any> => {
+export const getTransactions = async (
+  address: string,
+  overrides?: {
+    defaultEndpoint: string;
+  }
+): Promise<any> => {
   const receive = await network({
     method: "GET",
     url:
-      `${defaultEndpoint}/cosmos/tx/v1beta1/txs?events=` +
+      `${
+        overrides?.defaultEndpoint || defaultEndpoint
+      }/cosmos/tx/v1beta1/txs?events=` +
       encodeURI(`transfer.recipient='${address}'`),
   });
 

@@ -10,6 +10,8 @@ import elrond from "../families/elrond/account";
 
 import filecoin from "../families/filecoin/account";
 
+import luna from "../families/luna/account";
+
 import polkadot from "../families/polkadot/account";
 
 
@@ -20,5 +22,6 @@ export default {
   crypto_org,
   elrond,
   filecoin,
+  luna,
   polkadot,
 };

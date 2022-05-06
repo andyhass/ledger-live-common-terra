@@ -7,10 +7,10 @@ import {
   mergeOps,
 } from "../../bridge/jsHelpers";
 import { encodeAccountId } from "../../account";
-import { getAccountInfo } from "./api/Cosmos";
+import { getAccountInfo } from "../cosmos/api/Cosmos";
 import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
 import { encodeOperationId } from "../../operation";
-import { CosmosDelegationInfo } from "./types";
+import { CosmosDelegationInfo } from "../cosmos/types";
 
 export const txToOps = (info: any, id: string, txs: any): Operation[] => {
   const { address, currency } = info;
