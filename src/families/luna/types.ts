@@ -1,7 +1,7 @@
 import type { BigNumber } from "bignumber.js";
 import type {
   TransactionCommon,
-  // TransactionCommonRaw,
+  TransactionCommonRaw,
 } from "../../types/transaction";
 
 // export type NetworkInfo = {
@@ -30,10 +30,10 @@ export type NetworkInfo = {
   family: "luna";
   fees: BigNumber;
 };
-// export type NetworkInfoRaw = {
-//   family: "luna";
-//   fees: string;
-// };
+export type NetworkInfoRaw = {
+  family: "luna";
+  fees: string;
+};
 
 export type Transaction = TransactionCommon & {
   family: "luna";
@@ -45,14 +45,14 @@ export type Transaction = TransactionCommon & {
   // add here all transaction-specific fields if you implement other modes than "send"
 };
 
-// export type TransactionRaw = TransactionCommonRaw & {
-//   family: "luna";
-//   mode: string;
-//   networkInfo: NetworkInfoRaw | null | undefined;
-//   fees: string | null | undefined;
-//   gas: string | null | undefined;
-//   memo: string | null | undefined;
-// };
+export type TransactionRaw = TransactionCommonRaw & {
+  family: "luna";
+  mode: string;
+  networkInfo: NetworkInfoRaw | null | undefined;
+  fees: string | null | undefined;
+  gas: string | null | undefined;
+  memo: string | null | undefined;
+};
 
 // export type StatusErrorMap = {
 //   recipient?: Error;
@@ -74,12 +74,12 @@ export type Transaction = TransactionCommon & {
 //   totalSpent: BigNumber;
 // };
 
-// export type CoreStatics = Record<any, any>;
-// export type CoreAccountSpecifics = Record<any, any>;
-// export type CoreOperationSpecifics = Record<any, any>;
-// export type CoreCurrencySpecifics = Record<any, any>;
+export type CoreStatics = Record<any, any>;
+export type CoreAccountSpecifics = Record<any, any>;
+export type CoreOperationSpecifics = Record<any, any>;
+export type CoreCurrencySpecifics = Record<any, any>;
 
-// export const reflect = (_declare: any) => {};
+export const reflect = (_declare: any) => {};
 
 /**
  * MyCoin currency data that will be preloaded.
