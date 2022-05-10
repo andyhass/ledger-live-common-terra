@@ -12,7 +12,7 @@ import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
 import { encodeOperationId } from "../../operation";
 import { CosmosDelegationInfo } from "./types";
 
-const txToOps = (info: any, id: string, txs: any): Operation[] => {
+export const txToOps = (info: any, id: string, txs: any): Operation[] => {
   const { address, currency } = info;
   const ops: Operation[] = [];
 

@@ -135,6 +135,16 @@ const envDefinitions = {
     def: "https://solana.coin.ledger.com",
     desc: "proxy url for solana API",
   },
+  API_LUNA_INDEXER: {
+    def: "http://localhost:4444",
+    parser: stringParser,
+    desc: "Explorer API for Luna",
+  },
+  API_LUNA_NODE: {
+    def: "http://localhost:5555",
+    parser: stringParser,
+    desc: "Node endpoint for luna",
+  },
   BASE_SOCKET_URL: {
     def: "wss://scriptrunner.api.live.ledger.com/update",
     parser: stringParser,
