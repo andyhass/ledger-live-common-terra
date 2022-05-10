@@ -24,7 +24,7 @@ import {
   getMaxEstimatedBalance,
 } from "./logic";
 import invariant from "invariant";
-import { isValidRecipent } from "./api/Cosmos";
+import { defaultCosmosAPI } from "./api/Cosmos";
 
 export const getTransactionStatus = async (
   a: Account,
@@ -198,7 +198,7 @@ const getSendTransactionStatus = async (
   } else if (a.freshAddress === t.recipient) {
     errors.recipient = new InvalidAddressBecauseDestinationIsAlsoSource();
   } else {
-    if (!(await isValidRecipent(t.recipient))) {
+    if (!(await defaultCosmosAPI.isValidRecipent(t.recipient))) {
       errors.recipient = new InvalidAddress(undefined, {
         currencyName: a.currency.name,
       });

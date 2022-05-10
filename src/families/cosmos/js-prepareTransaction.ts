@@ -1,7 +1,7 @@
 import { Account } from "../../types";
 import { Transaction } from "./types";
 import BigNumber from "bignumber.js";
-import { simulate } from "./api/Cosmos";
+import { defaultCosmosAPI } from "./api/Cosmos";
 import { encodePubkey } from "@cosmjs/proto-signing";
 import { getEnv } from "../../env";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";
@@ -63,7 +63,7 @@ const getEstimatedFees = async (
       new Uint8Array(Buffer.from(account.seedIdentifier, "hex"))
     );
 
-    const gasUsed = await simulate(tx_bytes);
+    const gasUsed = await defaultCosmosAPI.simulate(tx_bytes);
 
     if (gasUsed.gt(0)) {
       gasQty = gasUsed

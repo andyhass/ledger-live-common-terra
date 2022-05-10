@@ -5,7 +5,7 @@ import {
   SignOperationEvent,
 } from "../../types";
 import type { Transaction } from "./types";
-import { getAccount, getChainId } from "./api/Cosmos";
+import { defaultCosmosAPI } from "./api/Cosmos";
 import { Observable } from "rxjs";
 import { withDevice } from "../../hw/deviceAccess";
 import { encodePubkey } from "@cosmjs/proto-signing";
@@ -32,11 +32,11 @@ const signOperation = ({
       let cancelled;
 
       async function main() {
-        const { accountNumber, sequence } = await getAccount(
+        const { accountNumber, sequence } = await defaultCosmosAPI.getAccount(
           account.freshAddress
         );
 
-        const chainId = await getChainId();
+        const chainId = await defaultCosmosAPI.getChainId();
 
         const hdPaths: any = stringToPath("m/" + account.freshAddressPath);
 
