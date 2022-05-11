@@ -13,7 +13,7 @@ export default class Luna {
 
   async getAddress(
     path: string,
-    verify: boolean
+    verify?: boolean
   ): Promise<{
     publicKey: string;
     address: string;
