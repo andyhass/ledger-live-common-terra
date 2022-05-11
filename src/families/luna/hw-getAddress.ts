@@ -1,12 +1,9 @@
 import type { Resolver } from "../../hw/getAddress/types";
 import Luna from "./hw-app-luna";
 
-const resolver: Resolver = async (
-  transport,
-  { path /*, verify, currency */ } // TODO is verify and currency needed?
-) => {
-  const cosmos = new Luna(transport);
-  const r = await cosmos.getAddress(path);
+const resolver: Resolver = async (transport, { path, verify }) => {
+  const luna = new Luna(transport);
+  const r = await luna.getAddress(path, verify);
 
   return {
     address: r.address,

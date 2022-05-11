@@ -8,9 +8,13 @@ export default class Luna {
 
   constructor(transport: Transport) {
     this.terraApp = new TerraApp(transport);
+    // this.terraApp.initialize();
   }
 
-  async getAddress(path: string): Promise<{
+  async getAddress(
+    path: string,
+    verify: boolean
+  ): Promise<{
     publicKey: string;
     address: string;
   }> {
@@ -21,10 +25,16 @@ export default class Luna {
       throw new ManagerDeviceLockedError();
     }
 
-    const addressAndPubKey = await this.terraApp.getAddressAndPubKey(
-      parseDerivationPathStringToArray(path),
-      "terra"
-    );
+    const addressAndPubKey = verify
+      ? await this.terraApp.showAddressAndPubKey(
+          parseDerivationPathStringToArray(path),
+          "terra"
+        )
+      : await this.terraApp.getAddressAndPubKey(
+          parseDerivationPathStringToArray(path),
+          "terra"
+        );
+
     // console.log(`addressAndPubKey: ${JSON.stringify(addressAndPubKey)}`);
     // if (response.return_code !== 0x9000) {
     //   throw new Error(

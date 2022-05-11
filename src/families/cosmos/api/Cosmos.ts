@@ -9,13 +9,7 @@ const defaultEndpoint = getEnv(
 ).replace(/\/$/, "");
 
 export class CosmosAPI {
-  private _defaultEndpoint: string = defaultEndpoint;
-
-  constructor(options?: { defaultEndpoint?: string }) {
-    if (options?.defaultEndpoint) {
-      this._defaultEndpoint = options?.defaultEndpoint;
-    }
-  }
+  protected _defaultEndpoint: string = defaultEndpoint;
 
   getAccountInfo = async (address: string): Promise<any> => {
     try {

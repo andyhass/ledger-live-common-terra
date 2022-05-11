@@ -163,7 +163,6 @@ export class CosmosAccount {
 
   constructor(options?: { api?: CosmosAPI }) {
     if (options?.api) {
-      console.log("SETTING API override");
       this._api = options.api;
     }
   }
